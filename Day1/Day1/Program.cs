@@ -10,16 +10,89 @@ namespace Day1
     {
         static void Main(string[] args)
         {
+
+            // PirmaisUzdevums();
+            /*Console.WriteLine(Piemers());
+            int a = Piemers();
+            Console.ReadLine();
+
+            Console.WriteLine(Piemers2(3, a));
+            Console.ReadLine(); */
+
+
+            // Uzdevums - saskaitisana un atnemsana
+            int result = SaskaititVaiAtnemt(3, 4);
+            Console.WriteLine(result);
+           
+            Console.ReadLine();
+                
+        }
+
+        static void PirmaisUzdevums()
+        {
             Console.WriteLine("Ka jus sauc?");
+
             String vards = Console.ReadLine();
+
             Console.WriteLine("Sveiki, " + vards);
 
 
-            // int, double, String, bool ...
+        }
 
+        static int Piemers()
+        {
+            return 4 + 3;
+        }
 
-            Console.ReadLine();
-            
+        static int Piemers2(int a, int b)
+        {
+            return a + b;
+        }
+
+        static void Piemers3()
+        {
+            Console.WriteLine("Ievadiet simbolus!");
+            String ievade = Console.ReadLine();
+            int a = 5;
+            if (ievade == "vii" && a > 5)
+            {
+                Console.WriteLine("1");
+            }
+            else if (ievade == "vii" && a == 5)
+            {
+                Console.WriteLine("2");
+            }
+            else
+            {
+
+            }
+            //<
+            //>
+            //<=, >=, ==(salidzina), = (pielidzina)
+            //!=
+
+            //&& AND
+            //|| OR
+        }
+        // funkcija, kas lauj cilvekam izveleties vai saskaita vai atnem
+        // jabut return, gan parametriem
+
+        static int SaskaititVaiAtnemt(int a, int b)
+        {
+            Console.WriteLine("Saskaitit vai atnemt?");
+            String izvele = Console.ReadLine();
+            if (izvele == "+")
+            {
+                return a + b;
+            }
+            else if(izvele == "-")
+            {
+                return a - b;
+            }
+            else
+            {
+                return -9999;
+            }
         }
     }
 }
