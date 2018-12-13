@@ -21,9 +21,19 @@ namespace Day1
 
 
             // Uzdevums - saskaitisana un atnemsana
-            int result = SaskaititVaiAtnemt(3, 4);
+            Console.WriteLine("Ievadiet skaitli");
+            String ievade = Console.ReadLine();
+            int skaitlis1 = Convert.ToInt16(ievade); // parveido simbolu uz skaitli
+
+
+            Console.WriteLine("Ievadiet skaitli");
+            ievade = Console.ReadLine();
+            int skaitlis2 = Convert.ToInt16(ievade);
+
+
+            ///////////////
+            int result = SaskaititVaiAtnemt(skaitlis1, skaitlis2);
             Console.WriteLine(result);
-           
             Console.ReadLine();
                 
         }
