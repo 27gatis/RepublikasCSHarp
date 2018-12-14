@@ -25,8 +25,6 @@ namespace Day1
             int skaitlis1 = IevaditSkaitli("Ievadit pirmo skaitli"); // parveido simbolu uz skaitli
             int skaitlis2 = IevaditSkaitli("Ievadit otro skaitli");
 
-
-            ///////////////
             int result = SaskaititVaiAtnemt(skaitlis1, skaitlis2);
             Console.WriteLine(result);
             Console.ReadLine();
