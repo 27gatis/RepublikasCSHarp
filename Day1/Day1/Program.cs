@@ -21,14 +21,9 @@ namespace Day1
 
 
             // Uzdevums - saskaitisana un atnemsana
-            Console.WriteLine("Ievadiet skaitli");
-            String ievade = Console.ReadLine();
-            int skaitlis1 = Convert.ToInt16(ievade); // parveido simbolu uz skaitli
-
-
-            Console.WriteLine("Ievadiet skaitli");
-            ievade = Console.ReadLine();
-            int skaitlis2 = Convert.ToInt16(ievade);
+            
+            int skaitlis1 = IevaditSkaitli("Ievadit pirmo skaitli"); // parveido simbolu uz skaitli
+            int skaitlis2 = IevaditSkaitli("Ievadit otro skaitli");
 
 
             ///////////////
@@ -103,6 +98,16 @@ namespace Day1
             {
                 return -9999;
             }
+        
+        }
+
+        static int IevaditSkaitli(String izvadamaZina)
+        {
+            Console.WriteLine(izvadamaZina);
+            String ievade = Console.ReadLine();
+
+            return Convert.ToInt16(ievade);
+
         }
     }
 }
