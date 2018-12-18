@@ -12,12 +12,14 @@ namespace Day4
         {
             Uzdevumi uzd = new Uzdevumi();
             uzd.PirmaisUzd();
-
             Console.ReadLine();
 
             Uzdevumi uzd2 = new Uzdevumi();
             uzd2.OtraisUzd();
+            Console.ReadLine();
 
+            Uzdevumi uzd3 = new Uzdevumi();
+            uzd3.Meklesana();
             Console.ReadLine();
         }
     }

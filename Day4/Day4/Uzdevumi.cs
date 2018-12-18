@@ -22,6 +22,8 @@ namespace Day4
                 Console.Write(skaitluMasivs[i] + " ");
             }
         }
+
+
         public void OtraisUzd()
         {
             Console.WriteLine("Ievadiet masiva garumu");
@@ -45,5 +47,22 @@ namespace Day4
 
         }
 
-    }
+        public void Meklesana()
+        {
+            Console.WriteLine("Ievadiet masiva garumu");
+            int garums = Convert.ToInt16(Console.ReadLine());
+
+            int[] skaitluMasivs = new int[garums];
+            
+
+            for (int i = 0; i < skaitluMasivs.Length; i++)
+
+            {
+                Console.WriteLine("Ievadiet masiva " + i + "." + " elementu");
+                skaitluMasivs[i] = Convert.ToInt16(Console.ReadLine()); // parkonverte ievadito vertibu uz int (masiva vertibu)
+
+            }
+            
+
+        }
 }
