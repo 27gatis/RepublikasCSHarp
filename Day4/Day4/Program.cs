@@ -10,16 +10,26 @@ namespace Day4
     {
         static void Main(string[] args)
         {
+            /* Uzdevumi uzd = new Uzdevumi();
+             uzd.PirmaisUzd();
+             Console.ReadLine();
+
+             Uzdevumi uzd2 = new Uzdevumi();
+             uzd2.OtraisUzd();
+             Console.ReadLine();
+
+             Uzdevumi uzd3 = new Uzdevumi();
+             uzd3.Meklesana();
+             Console.ReadLine();
+
+             Uzdevumi uzd4 = new Uzdevumi();
+             uzd4.PirmaisMajasdarbs();
+             Console.ReadLine(); 
+             */
+
+            // otrais majasdarbs
             Uzdevumi uzd = new Uzdevumi();
-            uzd.PirmaisUzd();
-            Console.ReadLine();
-
-            Uzdevumi uzd2 = new Uzdevumi();
-            uzd2.OtraisUzd();
-            Console.ReadLine();
-
-            Uzdevumi uzd3 = new Uzdevumi();
-            uzd3.Meklesana();
+            uzd.OtraisMajasdarbs();
             Console.ReadLine();
         }
     }
