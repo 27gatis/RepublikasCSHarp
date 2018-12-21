@@ -25,7 +25,7 @@ namespace Day5
         }
 
 
-        public void PozitivsVaiNegativs()
+        public void PozitivsVaiNegativs() //Mans risinajums - pareizs
         {
             ///Dots masivs, kuram ir 10 elementu. Pieskirt visiem pozitiviem masiva elementiem vertibu 1, bet negativiem vertibu 2.
 
@@ -52,67 +52,72 @@ namespace Day5
         }
 
 
-        public void IntervalaParbaude()
+
+        ///Dots masivs, kuram ir 10 elementu. Noskaidrojiet, cik daudz masiva ir elementu, kuri ir lielaki par 0, bet mazaki par 10.
+
+        public void IntervelaParbaude() // Pasniedzeja risinajums - pareizs
         {
-            ///Dots masivs, kuram ir 10 elementu. Noskaidrojiet, cik daudz masiva ir elementu, kuri ir lielaki par 0, bet mazaki par 10.
+            Console.WriteLine("Cik gars masivs?");
+            int garums = Convert.ToInt16(Console.ReadLine());
 
+            int[] masivs = new int[garums];
 
-            int[] skaitluMasivs = { 1, -2, 3, -7, 5, -11, 19, -11, -12, -13 };
+            for (int i = 0; i < masivs.Length; i++)
+            {
+                Console.WriteLine("Ievadiet vertibu: ");
+                masivs[i] = Convert.ToInt16(Console.ReadLine());
+            }
+
             int skaits = 0;
 
-            /////SEIT JABUT VEL 
-            // int lielakaisSkaitlis = skaitluMasivs[0];
-
-            for (int i = 0; i < skaitluMasivs.Length; i++)
+            for (int i = 0; i < masivs.Length; i++)
             {
-                if (skaitluMasivs[i] >= 1 && skaitluMasivs[i] < 10)
+                if (masivs[i] > 0 && masivs[i] < 10)
                 {
                     skaits++;
-                   // Console.WriteLine(i + " " + " derigs");
                 }
-                
-               
+
             }
-            Console.WriteLine("Derigie ir " + skaits);
-            
-            // Console.WriteLine("Lielakais skaitlis ir " + lielakaisSkaitlis);
+
+            Console.WriteLine("Atbilst " + skaits + " vertibas");
         }
 
 
         /// parbaudit vai masivs ir augoss
         public void VaiAugosa()
         {
-            Console.WriteLine("Ievadiet masiva garumu");
+            Console.WriteLine("Cik gars masivs?");
             int garums = Convert.ToInt16(Console.ReadLine());
 
-            int[] skaitluMasivs = new int[garums];
+            int[] masivs = new int[garums];
 
-            for (int i = 0; i < skaitluMasivs.Length; i++)
+            for (int i = 0; i < masivs.Length; i++)
             {
-                Console.WriteLine("Ievadiet skaitli");
-                skaitluMasivs[i] = Convert.ToInt16(Console.ReadLine());
+                Console.WriteLine("Ievadiet vertibu: ");
+                masivs[i] = Convert.ToInt16(Console.ReadLine());
             }
-
 
             bool navAugosa = false;
 
-            for (int i = 0; i < skaitluMasivs.Length - 1; i++)
+            for (int i = 0; i < masivs.Length - 1; i++)
             {
-                if (skaitluMasivs[i + 1] > skaitluMasivs[i])
+                if (masivs[i] > masivs[i + 1])
                 {
-
                     navAugosa = true;
                     break;
-
                 }
-                
-
-                if (navAugosa)
-                {
-                    Console.WriteLine("NAV augosa seciba");
-                }
-                       
             }
+
+            if (navAugosa)
+            {
+                Console.WriteLine("Elementi nav augosa seciba");
+            }
+            else
+            {
+                Console.WriteLine("Elementi ir augosa seciba");
+            }
+
+        }
            // Console.WriteLine("IR augosa seciba");
 
             // if (!skaitlisAtrasts) //(skaitlisAtrasts==false)
@@ -121,4 +126,5 @@ namespace Day5
             //}
         }
     }
-}
+
+

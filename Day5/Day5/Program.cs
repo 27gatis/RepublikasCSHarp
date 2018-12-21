@@ -11,7 +11,7 @@ namespace Day5
         static void Main(string[] args)
         {
             Uzdevumi uzd = new Uzdevumi();
-            uzd.Parbaude();
+            uzd.VaiAugosa();
             Console.ReadLine();
 
         }
