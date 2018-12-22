@@ -11,10 +11,13 @@ namespace Day7_8
         static void Main(string[] args)
         {
 
-            SarakstaUzdevumi sar = new SarakstaUzdevumi(); // uztaisam objektu, no saraksta piemeri
-            sar.IzvaditLietotajuSaraksts();  //no objekta izsaucam funkciju sarakstapiemers
-            Console.ReadLine();
+           // SarakstaUzdevumi sar = new SarakstaUzdevumi(); // uztaisam objektu, no saraksta piemeri
+           // sar.IzvaditLietotajuSaraksts();  //no objekta izsaucam funkciju sarakstapiemers
+            
 
+            SarakstaUzdevumi uzd = new SarakstaUzdevumi();
+            uzd.Interfeiss();
+            Console.ReadLine();
         }
     }
 }

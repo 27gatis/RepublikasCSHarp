@@ -8,74 +8,111 @@ namespace Day7_8
 {
     class SarakstaUzdevumi
     {
-        List<String> lietotaji = new List<String>();
-       // List<int> lietotajuNumuri = new List<int>();
-        public void IzvaditLietotajuSaraksts()
+        private List<String> lietotaji = new List<String>();
+        private List<int> lietotajuNumuri = new List<int>();
+        private void IzvaditLietotajuSarakstu()
         {
-            //String list 
-            //prasam, lai cilveks ievada lietotaja vardu, ko pievienot sarakstam
-            //izvelnei(while{switch, case)
-            //1.pievienot jaunu lietotaju sarakstam
-            //2.izvadit sarakstu
-            //ja saraksts ir tukss, tad pie izvelnes tas ir japasaka
-
-            String choice = "";
-
-            while (true)
+            //String list
+            //prasam, lai cilveks ievada lietotaja vardu ko pievienot sarakstam
+            //izvelnei (while{switch,case)
+            //1. pievienot jaunu lietotaju sarakstam
+            //2. izvadit sarakstu
+            //ja saraksts ir tukss, tad pie izvades tas ir japasaka
+            if (lietotaji.Count == 0)
             {
-                Console.WriteLine("Izvelies darbibu - 1 (lai pievienotu lietotaju) vai 2 (lai izvaditu sarakstu),  vai iziet (lai izietu)");
-                choice = Console.ReadLine();
-                if (choice == "iziet")
+                Console.WriteLine("Saraksts ir tukss");
+            }
+            else
+            {
+                for (int i = 0; i < lietotaji.Count; i++)
                 {
-                    break;
+                    Console.WriteLine(lietotajuNumuri[i] + "." + lietotaji[i]);
                 }
+            }
+
+        }
+
+        private void PievienotSarakstam()
+        {
+            Console.WriteLine("Ievadet lietotajvardu!");
+            lietotaji.Add(Console.ReadLine());
+
+            if (lietotajuNumuri.Count == 0)
+            {
+                lietotajuNumuri.Add(1);
+            }
+            else
+            {
+                lietotajuNumuri.Add(lietotajuNumuri[lietotajuNumuri.Count - 1] + 1);
+            }
 
 
-                // int skaitlis2 = Ievade("Ievadiet otro skaitli");
+        }
+
+        private void Search()
+        {
+            //pieskirt otra saraksta katram lietotajam numuru
+
+            //lietotajs ievada ID un tad pec ta mes ari atrodam lietotajvardu
+            //izvadam lietotajvardu + ID
+            // ja nav nekas attrasts , tad pazinojam
+            // ievada id - ar for ciklu ejam cauri id sarakstam
+            //no ta varam dabut i (indeksu), int atrastsaisSkaitlis = i;
+
+            //so indeksu varam izmantot, lai izvaditu Console.writeline(lietotaji[atrastaisSkaitlis])
+
+
+            Console.WriteLine("Ievadiet ID");
+            int id = Convert.ToInt16(Console.ReadLine());
+
+            bool skaitlisAtrasts = false;
+
+            for (int i = 0; i < lietotaji.Count; i++)
+            {
+                if (id == lietotajuNumuri[i])
+                {
+                    Console.WriteLine(lietotajuNumuri[i] + "." + lietotaji[i]);
+                    skaitlisAtrasts = true;
+                }
+            }
+
+            if (!skaitlisAtrasts) //(skaitlisAtrasts==false)
+            {
+                Console.WriteLine("ID netika atrasts");
+            }
+        }
+
+
+
+
+
+        public void Interfeiss()
+        {
+            String choice = "";
+            while (choice != "0")
+            {
+                Console.WriteLine("1, lai pievienotu, 2, lai izvaditu sarakstu,vai 7 (lai atrastu ID) 0, lai izietu");
+                choice = Console.ReadLine();
 
                 switch (choice)
                 {
                     case "1":
-
-                        // List<int> pirmaisSaraksts = new List<int>();
-                        Console.WriteLine("Ievadiet lietotaja vardu");
-                        String lietotajaVards = Console.ReadLine();
-                        lietotaji.Add(lietotajaVards);
-
+                        PievienotSarakstam();
                         break;
                     case "2":
-
-                        for (int i = 0; i < lietotaji.Count; i++)
-                        {
-                            Console.WriteLine(lietotaji[i]);
-                        }
-                        if (lietotaji.Count == 0) // parada, ka saraksts ir tukss
-                        {
-                            Console.WriteLine("Saraksts ir tukss!");
-                        }
-
+                        IzvaditLietotajuSarakstu();
                         break;
-
+                    case "7":
+                        Search();
+                        break;
+                    case "0":
+                        break;
                     default:
                         Console.WriteLine("Nepareiza ievade");
                         break;
                 }
-                    
-                
 
             }
-            
-
-
         }
-
-
-        public void PievienotSarakstam()
-        {
-
-        }
-
-
-
-}
+    }
 }
