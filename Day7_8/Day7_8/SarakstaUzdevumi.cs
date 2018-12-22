@@ -28,6 +28,11 @@ namespace Day7_8
                 {
                     Console.WriteLine(lietotajuNumuri[i] + "." + lietotaji[i]);
                 }
+
+                /*foreach(string lietotajs in lietotaji)
+                {
+                    Console.WriteLine(lietotajs);
+                }*/
             }
 
         }
@@ -36,6 +41,7 @@ namespace Day7_8
         {
             Console.WriteLine("Ievadet lietotajvardu!");
             lietotaji.Add(Console.ReadLine());
+
 
             if (lietotajuNumuri.Count == 0)
             {
@@ -53,72 +59,64 @@ namespace Day7_8
         {
             //pieskirt otra saraksta katram lietotajam numuru
 
-            //lietotajs ievada ID un tad pec ta mes ari atrodam lietotajvardu
-            //izvadam lietotajvardu + ID
-            // ja nav nekas attrasts , tad pazinojam
-            // ievada id - ar for ciklu ejam cauri id sarakstam
-            //no ta varam dabut i (indeksu), int atrastsaisSkaitlis = i;
-
-            //so indeksu varam izmantot, lai izvaditu Console.writeline(lietotaji[atrastaisSkaitlis])
-
-
+            //lietotajs ievada id un tad pec ta mes ari atrodam lietotajvardu
+            //Izvadam lietotajvardu + id
+            //ja nav nekas atrasts, tad pazinojumam
+            // ievada id- ar for ciklu ejam cauri id sarakstam
             Console.WriteLine("Ievadiet ID");
             int id = Convert.ToInt16(Console.ReadLine());
 
-            bool skaitlisAtrasts = false;
-
+            bool atrasts = false;
             for (int i = 0; i < lietotaji.Count; i++)
             {
                 if (id == lietotajuNumuri[i])
                 {
-                    Console.WriteLine(lietotajuNumuri[i] + "." + lietotaji[i]);
-                    skaitlisAtrasts = true;
+                    Console.WriteLine("ID " + lietotajuNumuri[i] + "ir lietotajvards " + lietotaji[i]);
+                    atrasts = true;
+                    break;
                 }
             }
 
-            if (!skaitlisAtrasts) //(skaitlisAtrasts==false)
+            if (atrasts != true)
             {
                 Console.WriteLine("ID netika atrasts");
             }
+            // no ta varam dabut i (indeksu). int atrastaisSkaitlis = i;
+
+            // so indeksu varam izmantot, lai izvaditu Console.WriteLine(lietotaji[atraistaisSkaitlis])
         }
 
-        private void Izdzest() ///izdzest konkretu lietotaju
+        private void Izdzest()
         {
             Console.WriteLine("Ievadiet ID");
             int id = Convert.ToInt16(Console.ReadLine());
 
-            bool skaitlisAtrasts = false;
-
+            bool atrasts = false;
             for (int i = 0; i < lietotaji.Count; i++)
             {
                 if (id == lietotajuNumuri[i])
                 {
-                    Console.WriteLine(lietotajuNumuri[i] + "." + lietotaji[i]);
-                    skaitlisAtrasts = true;
+                    //Console.WriteLine("ID " + lietotajuNumuri[i] + "ir lietotajvards " + lietotaji[i]);
                     lietotaji.RemoveAt(i);
-                    lietotajuNumuri.RemoveAt(i); //izdzest pec indeksa
-                    Console.WriteLine("Ieraksts dzests"); // izdzest pec indeksa
+                    lietotajuNumuri.RemoveAt(i);
+                    Console.WriteLine("Ieraksts dzests");
+                    atrasts = true;
+                    break;
                 }
             }
 
-            if (!skaitlisAtrasts) //(skaitlisAtrasts==false)
+            if (atrasts != true)
             {
                 Console.WriteLine("ID netika atrasts");
             }
-
-
         }
-
-
-
-
 
         public void Interfeiss()
         {
             String choice = "";
             while (choice != "0")
             {
-                Console.WriteLine("1, lai pievienotu, 2, lai izvaditu sarakstu,vai 7 (lai atrastu ID), vai 9(lai izdzestu lietotaju), vai  0, lai izietu");
+                Console.WriteLine("1, lai pievienotu, 2, lai izvaditu sarakstu,3, lai mekletu pec ID, 4, lai izdzestu, 0, lai izietu");
                 choice = Console.ReadLine();
 
                 switch (choice)
@@ -129,11 +127,19 @@ namespace Day7_8
                     case "2":
                         IzvaditLietotajuSarakstu();
                         break;
-                    case "7":
+                    case "3":
                         Search();
                         break;
-                    case "9":
+                    case "4":
                         Izdzest();
+                        break;
+                    case "5":
+                        FailaRakstisanasPiemers fails = new FailaRakstisanasPiemers();
+                        fails.Rakstit(lietotaji);
+                        break;
+                    case "6":
+                        FailaRakstisanasPiemers fails = new FailaRakstisanasPiemers();
+                        fails.LasitUnSaskaitit(lietotaji);
                         break;
                     case "0":
                         break;
