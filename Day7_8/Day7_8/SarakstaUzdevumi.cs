@@ -82,6 +82,33 @@ namespace Day7_8
             }
         }
 
+        private void Izdzest() ///izdzest konkretu lietotaju
+        {
+            Console.WriteLine("Ievadiet ID");
+            int id = Convert.ToInt16(Console.ReadLine());
+
+            bool skaitlisAtrasts = false;
+
+            for (int i = 0; i < lietotaji.Count; i++)
+            {
+                if (id == lietotajuNumuri[i])
+                {
+                    Console.WriteLine(lietotajuNumuri[i] + "." + lietotaji[i]);
+                    skaitlisAtrasts = true;
+                    lietotaji.RemoveAt(i);
+                    lietotajuNumuri.RemoveAt(i); //izdzest pec indeksa
+                    Console.WriteLine("Ieraksts dzests"); // izdzest pec indeksa
+                }
+            }
+
+            if (!skaitlisAtrasts) //(skaitlisAtrasts==false)
+            {
+                Console.WriteLine("ID netika atrasts");
+            }
+
+
+        }
+
 
 
 
@@ -91,7 +118,7 @@ namespace Day7_8
             String choice = "";
             while (choice != "0")
             {
-                Console.WriteLine("1, lai pievienotu, 2, lai izvaditu sarakstu,vai 7 (lai atrastu ID) 0, lai izietu");
+                Console.WriteLine("1, lai pievienotu, 2, lai izvaditu sarakstu,vai 7 (lai atrastu ID), vai 9(lai izdzestu lietotaju), vai  0, lai izietu");
                 choice = Console.ReadLine();
 
                 switch (choice)
@@ -104,6 +131,9 @@ namespace Day7_8
                         break;
                     case "7":
                         Search();
+                        break;
+                    case "9":
+                        Izdzest();
                         break;
                     case "0":
                         break;
