@@ -11,43 +11,35 @@ namespace Day7_8
         public void Rakstit(List<String> lines)
         {
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"C:\Users\User23\Desktop\WriteLines2.txt"))
+                new System.IO.StreamWriter(@"D:\VisualPiemeri\WriteLines2.txt"))
             {
                 foreach (string line in lines)
                 {
                     file.WriteLine(line);
                 }
             }
-
-           
-
         }
 
         public void LasitUnSaskaitit()
         {
-            string text = System.IO.File.ReadAllText(@"C:\Users\User23\Desktop\WriteLines2.txt");
-
-            // Display the file contents to the console. Variable text is a string.
-            System.Console.WriteLine("Contents of WriteText.txt = {0}", text);
-
-            // Example #2
-            // Read each line of the file into a string array. Each element
-            // of the array is one line of the file.
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\User23\Desktop\WriteLines2.txt");
+            //ielasam rindas no faila masiva (ta ka piemera)
+            //tas bus string tipa masivs, konvertejam uz int
+            //saskaitam a + b
+            string[] lines = System.IO.File.ReadAllLines(@"D:\VisualPiemeri\WriteLines2.txt");
 
             // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of WriteLines2.txt = ");
-            foreach (string line in lines)
+
+            int summa = 0;
+            System.Console.WriteLine("Summa = ");
+            for (int i = 0; i < lines.Length; i++)
             {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\t" + line);
+                summa = summa + Convert.ToInt16(lines[i]);
             }
 
-            // Keep the console window open in debug mode.
-            Console.WriteLine("Press any key to exit.");
-            System.Console.ReadKey();
+            Console.WriteLine(summa);
+            Console.ReadLine();
+
         }
     }
 }
 
-   

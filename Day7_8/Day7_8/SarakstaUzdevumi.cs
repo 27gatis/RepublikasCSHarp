@@ -137,10 +137,6 @@ namespace Day7_8
                         FailaRakstisanasPiemers fails = new FailaRakstisanasPiemers();
                         fails.Rakstit(lietotaji);
                         break;
-                    case "6":
-                        FailaRakstisanasPiemers fails = new FailaRakstisanasPiemers();
-                        fails.LasitUnSaskaitit(lietotaji);
-                        break;
                     case "0":
                         break;
                     default:
