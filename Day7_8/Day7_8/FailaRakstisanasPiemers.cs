@@ -11,7 +11,7 @@ namespace Day7_8
         public void Rakstit(List<String> lines)
         {
             using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(@"D:\VisualPiemeri\WriteLines2.txt"))
+                new System.IO.StreamWriter(@"D:\VisualPiemeri\WriteLines2"))
             {
                 foreach (string line in lines)
                 {

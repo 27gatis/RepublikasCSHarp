@@ -15,7 +15,7 @@ namespace Day7_8
             //uzd.Interfeiss();
 
             FailaRakstisanasPiemers fails = new FailaRakstisanasPiemers();
-            fails.LasitUnSaskaitit();
+            fails.Rakstit();
 
 
         }
