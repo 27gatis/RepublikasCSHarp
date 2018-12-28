@@ -17,15 +17,17 @@ namespace Day7_8
 
             Console.WriteLine();
 
-            String[] reverseLines = new String[lines.Length]; // apgriez
 
-            for (int i = 0; i < lines.Length; i++)
+            String[] reverseLines = new String[lines.Length]; // izveido jaunu string msivu - pasaka ka vins bus tikpat gars(lines.lenght)
+          
+            for (int i = 0; i < lines.Length; i++)   // apgriezt masivu
             {
                 reverseLines[i] = lines[lines.Length - 1 - i]; // 1. 4-1-0(1. ir pedeja rinda)
                 Console.WriteLine(reverseLines[i]);
             }
 
             Console.WriteLine();
+
 
             using (System.IO.StreamWriter file =  
             new System.IO.StreamWriter(@"D:\VisualPiemeri\dzejolis2.txt"))
