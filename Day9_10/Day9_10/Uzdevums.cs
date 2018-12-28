@@ -8,18 +8,19 @@ namespace Uzdevumi
 {
     class Uzdevums
     {
-        private List<String> joki = new List<String>();
-
+        List<String> joki = new List<String>();
         public void Menu()
         {
+
             String choice = "";
             while (choice != "0")
             {
 
-                Console.WriteLine("1. - izvadit visus jokus");
-                Console.WriteLine("2. - izvadit konkretu joku");
-                Console.WriteLine("3. - Pievienot sarakstam");
-                Console.WriteLine("4. - Random joks");
+                Console.WriteLine("1.- Izvadit visus jokus");
+                Console.WriteLine("2.- Izvadit konkretu joku");
+                Console.WriteLine("3.- Pievienot sarakstam");
+                Console.WriteLine("4.- Random joks");
+                Console.WriteLine("5.- iztirit failu");
                 Console.WriteLine("0. - iziet");
 
                 choice = Console.ReadLine();
@@ -28,69 +29,114 @@ namespace Uzdevumi
                     case "1":
                         IzvaditVisus();
                         break;
-
                     case "2":
                         IzvaditKonkretu();
                         break;
-
                     case "3":
+                        Pievienot();
                         break;
-
                     case "4":
+                        RandomJoks();
                         break;
-
+                    case "5":
+                        Tirit();
+                        break;
                     case "0":
                         break;
                     default:
                         Console.WriteLine("Nepareiza ievade");
                         break;
                 }
-            }
 
+            }
+        }
+
+        private void IzvaditVisus()
+        {
+            RefreshJoki();
+            foreach (String joks in joki)
+            {
+                Console.WriteLine(joks);
+            }
+        }
+
+        private void IzvaditKonkretu()
+        {
+            RefreshJoki();
+            Console.WriteLine("Ievadiet indeksu!");
+            int jokaNr = Convert.ToInt32(Console.ReadLine());
+
+            if (jokaNr > 0 && jokaNr <= joki.Count)
+            {
+                Console.WriteLine(joki[jokaNr - 1]);
+            }
+            else
+            {
+                Console.WriteLine("Nepareiza ievade");
+            }
 
         }
 
-        public void IzvaditVisus()
+        private void Pievienot()
         {
-            String[] joki = System.IO.File.ReadAllLines(@"D:\VisualPiemeri\joki.txt"); // nolasa
+            RefreshJoki();
+            Console.WriteLine("Ievadiet joku!");
+            String teksts = Console.ReadLine();
 
-            for (int i = 0; i < joki.Length; i++) // izvada
+            if (teksts != "")
             {
-                Console.WriteLine(joki[i]);
+                joki.Add(teksts);
+            }
+            else
+            {
+                Console.WriteLine("Nepareiza ievade");
+                return;
             }
 
-            Console.WriteLine();
-        }
 
-
-        public void IzvaditKonkretu()
-        {
-            Console.WriteLine("Ievadi indeksu!");
-            String[] joki = System.IO.File.ReadAllLines(@"D:\VisualPiemeri\joki.txt"); // nolasa
-            int jokaNr = Convert.ToInt16(Console.ReadLine());
-            bool skaitlisAtrasts = false;
-
-            for (int i = 0; i < joki.Length; i++) // izvada
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"D:\VisualPiemeri\joki.txt"))
             {
-                if (jokaNr == i + 1)
+                foreach (string joks in joki)
                 {
-                    Console.WriteLine("joks ir - " + joki [i]);
-                    skaitlisAtrasts = true;
+                    file.WriteLine(joks);
                 }
             }
+        }
 
-            if (!skaitlisAtrasts) //(skaitlisAtrasts==false)
+        private void RandomJoks()
+        {
+            Random rnd = new Random();
+            int jokaNr = rnd.Next(joki.Count);
+            Console.WriteLine(joki[jokaNr]);
+        }
+
+        private void Tirit()
+        {
+            joki.Clear();
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"D:\VisualPiemeri\joki.txt"))
             {
-                Console.WriteLine("Tada joka nav");
+                file.Write("");
             }
         }
-
-        public void Pievienosana()
+        private void RefreshJoki()
         {
+            joki.Clear();
+            string[] lines = System.IO.File.ReadAllLines(@"D:\VisualPiemeri\joki.txt");
 
-        }
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i] != "")
+                {
+                    joki.Add(lines[i]);
+                }
 
-        
+            }
         }
     }
-   
+}
+
+
+
+
