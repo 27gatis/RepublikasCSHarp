@@ -30,10 +30,10 @@ namespace MajasdarbsLietotajuLasisanaRakstisana
                 Console.WriteLine("2.- Izvadit konkretu lietotaju");
                 Console.WriteLine("3.- Pievienot sarakstam");
                 Console.WriteLine("4.- Izdzest lietotaju");
-                Console.WriteLine("9.- Random lietotajs");
-                Console.WriteLine("5.- iztirit failu");
+                Console.WriteLine("5.- Iztirit failu");
                 Console.WriteLine("6.- Ierakstit sarakstu faila");
-                Console.WriteLine("0. - iziet");
+                Console.WriteLine("9.- Izvadit Random lietotaju");
+                Console.WriteLine("0.- Iziet");
 
                 choice = Console.ReadLine();
                 switch (choice)
@@ -45,20 +45,21 @@ namespace MajasdarbsLietotajuLasisanaRakstisana
                         IzvaditKonkretu();// strada, bet neizmanto numuru failu
                         break;
                     case "3":
-                        Pievienot(); // numuri dublejas
+                        Pievienot(); // numuri dublejas(pievieno lietotaju, bet nepievieno numuru otra faila, tikai vardu)
                         break;
-                    case "9":
-                        //RandomJoks();
-                        break;
+                    
                     case "4":
-                        IzdzestLietotaju(); //NESTRADA
+                        IzdzestLietotaju(); //Nestrada
                         break;
                     case "5":
-                        DzestVisusLietotajus(); //OK
+                        DzestVisusLietotajus(); //Strada
                         break;
                     case "6":
-                        RakstisanaJaunaFaila fails = new RakstisanaJaunaFaila(); //OK
+                        RakstisanaJaunaFaila fails = new RakstisanaJaunaFaila(); // Strada
                         fails.Rakstit(lietotaji);
+                        break;
+                    case "9":
+                        RandomLietotajs(); // Strada
                         break;
                     case "0":
                         break;
@@ -92,7 +93,7 @@ namespace MajasdarbsLietotajuLasisanaRakstisana
             }
             else
             {
-                Console.WriteLine("Nepareiza ievade");
+                Console.WriteLine("Lietotajs Neeksiste");
             }
 
         }
@@ -108,7 +109,7 @@ namespace MajasdarbsLietotajuLasisanaRakstisana
             if (teksts != "")
             {
                 lietotaji.Add(teksts);
-                //lietotajuNumuri.Add(teksts); // raksta otra(ID) faila vardus
+                lietotajuNumuri.Add(teksts); // raksta otra(ID) faila vardus
             }
             else
             {
@@ -133,7 +134,7 @@ namespace MajasdarbsLietotajuLasisanaRakstisana
             {
                 foreach (String lietotajanumurs in lietotajuNumuri)
                 {
-                    file.WriteLine(lietotajanumurs); //rakstisana 2.faila - raksta tikai vardu?????
+                    file.WriteLine(lietotajanumurs); //rakstisana 2.faila - raksta tikai vardu (Bet nepieciesams lai raksta ID)
 
                 }
 
@@ -152,7 +153,7 @@ namespace MajasdarbsLietotajuLasisanaRakstisana
             bool atrasts = false;
             for (int i = 0; i < lietotaji.Count; i++)
             {
-                if (lietotaji.Contains(id))
+                if (lietotajuNumuri.Contains(id))
                 {
                     //Console.WriteLine
                     lietotaji.RemoveAt(i);
@@ -178,6 +179,20 @@ namespace MajasdarbsLietotajuLasisanaRakstisana
             {
                 file.Write("");
             }
+
+            lietotajuNumuri.Clear();
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"D:\VisualPiemeri\lietotajuNumuri.txt"))
+            {
+                file.Write("");
+            }
+        }
+
+        private void RandomLietotajs()
+        {
+            Random rnd = new Random();
+            int lietotajaNr = rnd.Next(lietotaji.Count);
+            Console.WriteLine(lietotaji[lietotajaNr]);
         }
 
 
